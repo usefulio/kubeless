@@ -45,6 +45,8 @@ load ../script/libtest
   deploy_function post-php
   deploy_function post-go
   deploy_function custom-get-python
+  deploy_function get-java
+  deploy_function get-java-deps
 }
 @test "Test function: get-python" {
   verify_function get-python
@@ -180,6 +182,13 @@ load ../script/libtest
 @test "Test function: get-python-secrets" {
   verify_function get-python-secrets
   kubeless_function_delete get-python-secrets
+}
+@test "Test function: get-java" {
+  verify_function get-java
+  kubeless_function_delete get-java
+}
+@test "Test function: get-java-deps" {
+  verify_function get-java-deps
 }
 @test "Test no-errors" {
   if kubectl logs -n kubeless -l kubeless=controller | grep "level=error"; then
