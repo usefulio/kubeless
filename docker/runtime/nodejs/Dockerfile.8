@@ -11,5 +11,4 @@ WORKDIR kubeless_rt/
 RUN npm install
 
 USER 1000
-
-CMD ["node", "kubeless.js"]
+CMD ["node", "--max-old-space-size=8192", "kubeless.js"]
